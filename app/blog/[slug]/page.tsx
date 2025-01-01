@@ -6,7 +6,7 @@ interface Blog {
   title: string;
   slug: { current: string };
   mainImage: { asset: { url: string } };
-  body: PortableTextBlock[]; // Use a specific type for PortableText content
+  body: PortableTextBlock[];
   publishedAt: string;
 }
 
