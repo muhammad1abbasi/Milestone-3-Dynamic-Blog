@@ -1,4 +1,4 @@
-import { PortableText } from '@portabletext/react';
+import { PortableText, PortableTextBlock } from '@portabletext/react';
 import { client } from '@/sanity/lib/client';
 
 interface Blog {
@@ -6,14 +6,12 @@ interface Blog {
   title: string;
   slug: { current: string };
   mainImage: { asset: { url: string } };
-  body: any; 
+  body: PortableTextBlock[]; // Use a specific type for PortableText content
   publishedAt: string;
 }
 
-
 const BlogPost = async ({ params }: { params: { slug: string } }) => {
   const { slug } = params;
-
 
   const query = `*[_type == "post" && slug.current == $slug][0]{
     _id, 
